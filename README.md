@@ -75,6 +75,7 @@ Being a non-Steam game does not inherently prevent a game from using Steamworks,
 The dev works around this on a normal Windows install by reading the username and profile picture from the Windows registry and Steam's configuration files in src/NightRunnersMP/Steam.cs, with the following comments:
 
 // no steamworks in the game, so read what the steam client leaves around:
+
 // account in the registry, name and pic in its files
 
 From HKCU\Software\Valve\Steam\ActiveProcess, the game reads:
@@ -105,10 +106,15 @@ To do this, we will add the missing registry value and create symbolic links bet
 
 Open a terminal and define the Steam installation and game prefix paths:
 
+
 STEAM="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam"
+
 COMPAT="$STEAM/steamapps/compatdata/YOUR_GAME_PREFIX_ID"
+
 WINSTEAM="$COMPAT/pfx/drive_c/Program Files (x86)/Steam"
+
 REG="$COMPAT/pfx/user.reg"
+
 
 Replace YOUR_GAME_PREFIX_ID with the compatibility prefix ID for your game.
 
